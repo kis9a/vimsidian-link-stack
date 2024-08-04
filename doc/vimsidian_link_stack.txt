@@ -74,12 +74,14 @@ Move to previous entry in link stack
 ==============================================================================
 EXAMPLES                                       *vimsidian_link_stack_examples*
 
+written in `~/.vim/ftplugin/markdown.vim`
+
 let g:vimsidian_enable_link_stack = 1
 
 nnoremap <buffer> <C-]> :VimsidianMoveToLink<CR>
-nnoremap <silent> <C-t> :VimsidianLinkStackPrev<CR>
-nnoremap <silent> sn :VimsidianLinkStackNext<CR>
-nnoremap <silent> ss :VimsidianLinkStackShow<CR>
+nnoremap <buffer> <silent> <C-t> :VimsidianLinkStackPrev<CR>
+nnoremap <buffer> <silent> sn :VimsidianLinkStackNext<CR>
+nnoremap <buffer> <silent> ss :VimsidianLinkStackShow<CR>
 
 let $VIMSIDIAN_PATH_PATTERN = g:vimsidian_path_main . '/*.md'
 if g:vimsidian_enable_link_stack

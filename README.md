@@ -21,16 +21,21 @@ Plug 'kis9a/vimsidian-link-stack'
 
 ## Examples
 
-written in `~/.vimrc` or `~/.vim/ftplugin/markdown.vim`
+written in `~/.vim/ftplugin/markdown.vim`
 
 ```vim
 let g:vimsidian_enable_link_stack = 1
 
 " Example mapping like ctags jump
 nnoremap <buffer> <C-]> :VimsidianMoveToLink<CR>
-nnoremap <silent> <C-t> :VimsidianLinkStackPrev<CR>
-nnoremap <silent> sn :VimsidianLinkStackNext<CR>
-nnoremap <silent> ss :VimsidianLinkStackShow<CR>
+nnoremap <buffer> <silent> <C-t> :VimsidianLinkStackPrev<CR>
+nnoremap <buffer> <silent> sn :VimsidianLinkStackNext<CR>
+nnoremap <buffer> <silent> ss :VimsidianLinkStackShow<CR>
+
+let $VIMSIDIAN_PATH_PATTERN = g:vimsidian_path_main . '/*.md'
+if g:vimsidian_enable_link_stack
+  autocmd VimEnter,WinNew $VIMSIDIAN_PATH_PATTERN VimsidianLinkStackWinNew
+endif
 
 let $VIMSIDIAN_PATH_PATTERN = g:vimsidian_path_main . '/*.md'
 if g:vimsidian_enable_link_stack
