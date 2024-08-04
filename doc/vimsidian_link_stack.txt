@@ -1,0 +1,90 @@
+*vimsidian_link_stack.txt*
+
+*vimsidian_link_stack*
+
+AUTHOR: *kis9a* <kis9ax@gmail.com>
+REPOSITORY: https://github.com/kis9a/vimsidian-link-stack
+LICENSE: WTFPL
+
+==============================================================================
+REQUIREMENTS                               *vimsidian_link_stack_requirements*
+
+Required plugins:
+  vimsidian: https://github.com/kis9a/vimsidian
+
+Required variables:
+  let g:vimsidian_path = 0
+
+==============================================================================
+VARIABLES                                     *vimsidian_link_stack_variables*
+
+|g:vimsidian_enable_link_stack|
+|g:vimsidian_link_stack_open_mode|
+
+------------------------------------------------------------------------------
+                                               *g:vimsidian_enable_link_stack*
+
+  let g:vimsidian_enable_link_stack = 1
+
+Keep a stack of link jump history in each window (w:w:vimsidian_link_stack)
+Provides jump and jumpback functionality to entries in the link stack.
+Enabled by default
+
+------------------------------------------------------------------------------
+                                            *g:vimsidian_link_stack_open_mode*
+
+  let g:vimsidian_link_stack_open_mode = 'e!'
+
+Change the mode for opening the daily notes.
+
+  let g:vimsidian_link_stack_open_mode = 'newtab'
+  let g:vimsidian_link_stack_open_mode = 'vnew'
+  let g:vimsidian_link_stack_open_mode = 'new'
+
+==============================================================================
+COMMANDS                                      *vimsidian_link_stack-commands*
+
+|:VimsidianLinkStackShow|
+|:VimsidianLinkStackPrev|
+|:VimsidianLinkStackNext|
+|:VimsidianLinkStackWinNew|
+
+------------------------------------------------------------------------------
+                                                        *vimsidian_link_stack_show*
+
+  |:VimsidianLinkStackShow|
+
+Show the contents of the link stack and the current position
+
+------------------------------------------------------------------------------
+                                  *vimsidian_link_stack_next*
+
+  |:VimsidianLinkStackNext|
+
+Move to next entry in link stack
+
+------------------------------------------------------------------------------
+                              *vimsidian_link_stack_prev*
+
+  |:VimsidianLinkStackPrev|
+
+Move to previous entry in link stack
+
+
+==============================================================================
+EXAMPLES                                       *vimsidian_link_stack_examples*
+
+let g:vimsidian_enable_link_stack = 1
+
+nnoremap <buffer> <C-]> :VimsidianMoveToLink<CR>
+nnoremap <silent> <C-t> :VimsidianLinkStackPrev<CR>
+nnoremap <silent> sn :VimsidianLinkStackNext<CR>
+nnoremap <silent> ss :VimsidianLinkStackShow<CR>
+
+let $VIMSIDIAN_PATH_PATTERN = g:vimsidian_path_main . '/*.md'
+if g:vimsidian_enable_link_stack
+  autocmd VimEnter,WinNew $VIMSIDIAN_PATH_PATTERN VimsidianLinkStackWinNew
+endif
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl
