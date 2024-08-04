@@ -39,8 +39,8 @@ function! vimsidian#link_stack#command#move_to_next_entry() abort
 endfunction
 
 " This is executed from the MoveToLink command in vimsidian.
-function! vimsidian#link_stack#command#move_to_link(file) abort
-  call vimsidian#link_stack#push_cursor_link()
+function! vimsidian#link_stack#command#move_to_link(file, line, col) abort
+  call vimsidian#link_stack#push_cursor_link(a:line, a:col)
   call s:openFile(g:vimsidian_link_stack_open_mode, a:file)
 endfunction
 

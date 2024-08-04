@@ -36,11 +36,6 @@ let $VIMSIDIAN_PATH_PATTERN = g:vimsidian_path_main . '/*.md'
 if g:vimsidian_enable_link_stack
   autocmd VimEnter,WinNew $VIMSIDIAN_PATH_PATTERN VimsidianLinkStackWinNew
 endif
-
-let $VIMSIDIAN_PATH_PATTERN = g:vimsidian_path_main . '/*.md'
-if g:vimsidian_enable_link_stack
-  autocmd VimEnter,WinNew $VIMSIDIAN_PATH_PATTERN VimsidianLinkStackWinNew
-endif
 ```
 
 ## Developments

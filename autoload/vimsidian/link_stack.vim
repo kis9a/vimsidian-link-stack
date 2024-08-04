@@ -125,9 +125,8 @@ function! vimsidian#link_stack#is_empty() abort
   endif
 endfunction
 
-function! vimsidian#link_stack#push_cursor_link() abort
-  let [line, col] = vimsidian#unit#cursorLinkPosition()
-  call vimsidian#link_stack#push({ 'path': expand('%:p'), 'line': line, 'col': col })
+function! vimsidian#link_stack#push_cursor_link(line, col) abort
+  call vimsidian#link_stack#push({ 'path': expand('%:p'), 'line': a:line, 'col': a:col })
 endfunction
 
 function! vimsidian#link_stack#previous_entry() abort

@@ -55,28 +55,6 @@ function! s:suite.local_window_variable_scoped() abort
   call s:assert.equal(gettabwinvar(Atabpagenr, Awinid, 'vimsidian_foo'), ['A'])
 endfunction
 
-" function! s:suite.link_stack_winnew() abort
-"   call s:edit_A()
-"   let Atabpagenr = tabpagenr()
-"   let Awinid = win_getid()
-"   let s:v1 = {'path': 'path', 'line': 3, 'col': 5}
-"   let w:vimsidian_link_stack = [s:v1]
-
-"   execute 'tab split'
-"   let A1tabpagenr = win_getid()
-"   let A1winid = win_getid()
-"   call s:assert.not_equal(Awinid, A1winid)
-"   call s:assert.not_equal(Atabpagenr, A1tabpagenr)
-
-"   call cursor(3, 1)
-"   let [line, col] = vimsidian#unit#CursorLinkPosition()
-"   let v = { 'path': expand('%:p'), 'line': line, 'col': col }
-"   call vimsidian#link_stack#push(v)
-"   call s:assert.equal(w:vimsidian_link_stack, [s:v1, v])
-
-"   call s:assert.equal(gettabwinvar(Atabpagenr, Awinid, 'vimsidian_link_stack'), [s:v1])
-" endfunction
-
 function! s:suite.link_top_curidx() abort
   let w:vimsidian_link_stack = []
   call vimsidian#link_stack#top_curidx()
